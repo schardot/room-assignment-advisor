@@ -1,0 +1,7 @@
+room_number,wing,floor,category,bed_possible,max_guests
+201,A,0,S2,Twin/Double,3
+202,A,0,S2,Twin/Double,3
+203,A,0,S3,Double,2
+204,B,1,S2,Double,2
+205,B,1,S3,Double,2
+301,C,2,S4,Double,2

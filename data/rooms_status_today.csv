@@ -1,0 +1,7 @@
+room_number,status,bed_mounted,ready
+201,occupied,Double,false
+202,occupied,Double,false
+203,free,Twin,false
+204,free,Double,true
+205,maintenance,Double,false
+301,free,Double,true

@@ -1,0 +1,4 @@
+booking_id,guest_name,guests,has_children,has_elderly,check_in,check_out,category,notes
+B001,Natalia Leite,2,true,false,2026-01-01,2026-01-02,S2,"No stairs please"
+B002,Carlos Mendes,2,false,true,2026-01-01,2026-01-03,S3,"Prefer close to parking"
+B003,Ana Rocha,1,false,false,2026-01-01,2026-01-02,S2,"Quiet room if possible"
