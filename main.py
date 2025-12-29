@@ -1,6 +1,6 @@
 from house_state import build_house_state
 from csv_loader import load_checkins_today
-from room_recommender import recommend_room_by_category
+from room_recommender.recommender import recommend_room
 
 house_state = build_house_state(
     "data/rooms_main.csv",
@@ -12,7 +12,7 @@ checkins = load_checkins_today("data/checkins_today.csv")
 
 booking = checkins[0]
 
-room = recommend_room_by_category(booking, house_state)
+room = recommend_room(booking, house_state)
 
 print(f"Booking {booking.booking_id}")
 
