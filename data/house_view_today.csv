@@ -1,6 +1,6 @@
 room_number,house_status,checkout_date,mounted,notes
 201,busy,2026-01-01,Double,Checkout today
-202,busy,2026-01-02,Double,
+202,free,2026-01-02,Double,Ready for immediate check-in
 203,free,,Twin,Needs bed setup
 204,free,,Double,Ready for immediate check-in
 205,blocked,,Double,Under maintenance
