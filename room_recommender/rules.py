@@ -1,4 +1,5 @@
 from models import Booking, HouseRoom
+from llm.constraint_extractor import extract_constraints
 
 
 def filter_by_category(booking: Booking, rooms: list[HouseRoom]) -> list[HouseRoom]:
@@ -17,9 +18,8 @@ def prefer_ground_floor_if_no_stairs(
     if not booking.notes:
         return rooms
 
-    notes = booking.notes.lower()
-    if "no stairs" not in notes and "sem escadas" not in notes:
-        return rooms
+    constraints = extract_constraints(booking.notes)
+    if constraints["no_stairs"]:
+        return [r for r in rooms if r.floor == 0]
+    return rooms
 
-    ground = [r for r in rooms if r.floor == 0]
-    return ground if ground else rooms
