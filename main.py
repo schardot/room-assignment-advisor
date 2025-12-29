@@ -1,4 +1,6 @@
 from house_state import build_house_state
+from csv_loader import load_checkins_today
+from room_recommender import recommend_room_by_category
 
 house_state = build_house_state(
     "data/rooms_main.csv",
@@ -6,12 +8,15 @@ house_state = build_house_state(
     "data/house_view_today.csv",
 )
 
-total = len(house_state)
-usable = sum(1 for r in house_state.values() if r.usable_today)
-occupied = sum(1 for r in house_state.values() if r.status == "occupied")
-blocked = sum(1 for r in house_state.values() if r.status in ("maintenance", "blocked"))
+checkins = load_checkins_today("data/checkins_today.csv")
 
-print(f"Total rooms: {total}")
-print(f"Usable today: {usable}")
-print(f"Occupied today: {occupied}")
-print(f"Blocked today: {blocked}")
+booking = checkins[0]
+
+room = recommend_room_by_category(booking, house_state)
+
+print(f"Booking {booking.booking_id}")
+
+if room:
+    print(f"Recommended room: {room.number} (category {room.category})")
+else:
+    print("No suitable room found")
