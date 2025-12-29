@@ -29,7 +29,8 @@ def build_house_state(
         effective_status = status.get("status", "unknown")
         ready = status.get("ready", False)
 
-        usable_today = effective_status == "free"
+        house_status = view.house_status if view else None
+        usable_today = (effective_status == "free") or (house_status == "free")
 
         house_state[room_number] = HouseRoom(
             number=room_number,
