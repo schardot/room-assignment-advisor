@@ -34,5 +34,18 @@ class HouseView:
     notes: str
     checkout_date: Optional[date] = None
 
+@dataclass
+class HouseRoom:
+    number: int
+    wing: str
+    floor: int
+    category: str
+    bed_possible: str
+    max_guests: int
 
+    status: str
+    bed_mounted: str
+    ready: bool
+
+    usable_today: bool
 
