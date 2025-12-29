@@ -51,7 +51,7 @@ room-assignment-advisor/
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/schardot/room-assignment-advisor.git
 cd room-assignment-advisor
 ```
 
