@@ -20,14 +20,19 @@ def load_rooms_main(path: str) -> list[Room]:
     return rooms
 
 
-def load_rooms_status_today(path: str) -> set[int]:
-    occupied = set()
+def load_rooms_status_today(path: str) -> list[dict]:
+    rooms_status = []
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
             if row["room_number"]:
-                occupied.add(int(row["room_number"]))
-    return occupied
+                rooms_status.append({
+                    "room_number": int(row["room_number"]),
+                    "status": row["status"],
+                    "bed_mounted": row.get("bed_mounted", ""),
+                    "ready": row.get("ready", "false").lower() == "true"
+                })
+    return rooms_status
 
 def load_checkins_today(path: str) -> list[Booking]:
     checkins = []

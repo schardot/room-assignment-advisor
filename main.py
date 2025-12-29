@@ -1,11 +1,17 @@
-from csv_loader import (
-    load_rooms_main,
-    load_rooms_status_today,
-    load_checkins_today,
-    load_house_view_today,
+from house_state import build_house_state
+
+house_state = build_house_state(
+    "data/rooms_main.csv",
+    "data/rooms_status_today.csv",
+    "data/house_view_today.csv",
 )
 
-print("Rooms:", len(load_rooms_main("data/rooms_main.csv")))
-print("Room statuses:", len(load_rooms_status_today("data/rooms_status_today.csv")))
-print("Check-ins:", len(load_checkins_today("data/checkins_today.csv")))
-print("House view entries:", len(load_house_view_today("data/house_view_today.csv")))
+total = len(house_state)
+usable = sum(1 for r in house_state.values() if r.usable_today)
+occupied = sum(1 for r in house_state.values() if r.status == "occupied")
+blocked = sum(1 for r in house_state.values() if r.status in ("maintenance", "blocked"))
+
+print(f"Total rooms: {total}")
+print(f"Usable today: {usable}")
+print(f"Occupied today: {occupied}")
+print(f"Blocked today: {blocked}")
